@@ -2,7 +2,7 @@ require 'astrolabe/builder'
 require 'parser/current'
 
 class AttrAccessible2StrongParams::Converter
-  def convert(filename)
+  def read_attr_accessible(filename)
     buffer = Parser::Source::Buffer.new(filename)
     buffer.source = File.read(filename)
 
@@ -10,7 +10,7 @@ class AttrAccessible2StrongParams::Converter
     parser = Parser::CurrentRuby.new(builder)
 
     root_node = parser.parse(buffer)
-    p root_node
-    root_node.class.to_s # => Astrolabe::Node
+    m = root_node.each_node(:send).select {|n| n.children[1] == :attr_accessible}.first
+    @aa = m.each_node(:sym).collect {|n| n.children[0]}
   end
 end
