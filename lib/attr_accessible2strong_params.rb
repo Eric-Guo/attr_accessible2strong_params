@@ -1,7 +1,7 @@
 class AttrAccessible2StrongParams
-  def self.convert
+  def self.convert(filename)
     t = Converter.new
-    t.convert
+    t.convert filename
   end
 end
 
