@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'attr_accessible2strong_params'
+puts AttrAccessible2StrongParams.hi(ARGV[0])

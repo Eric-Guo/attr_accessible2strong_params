@@ -1,4 +1,4 @@
-class Hola::Translator
+class AttrAccessible2StrongParams::Translator
   def initialize(language = "english")
     @language = language
   end

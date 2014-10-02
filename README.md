@@ -1,33 +1,14 @@
-# Hola
+# Attr Accessible TO Strong Params
 
-Simple “hello world” gem, with tests and code coverage
+Automatically convert Rails 3 attr_accessible to Rails 4 Strong Parameter
 
-[![Travis CI tests](https://travis-ci.org/Eric-Guo/hola.png)](https://travis-ci.org/Eric-Guo/hola)
-[![Coverage Status](https://coveralls.io/repos/Eric-Guo/hola/badge.png?branch=master)](https://coveralls.io/r/Eric-Guo/hola?branch=master)
+[![Travis CI tests](https://travis-ci.org/Eric-Guo/attr_accessible2strong_params.png)](https://travis-ci.org/Eric-Guo/attr_accessible2strong_params)
+[![Coverage Status](https://coveralls.io/repos/Eric-Guo/attr_accessible2strong_params/badge.png?branch=master)](https://coveralls.io/r/Eric-Guo/attr_accessible2strong_params?branch=master)
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'hola'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install hola
+    $ gem install attr_accessible2strong_params
 
 ## Usage
 
-See http://guides.rubygems.org/make-your-own-gem/
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
-
+Run `attr_accessible2strong_params` in your rails root folder and program will do auto convert. (You must using git to control change, right?)
