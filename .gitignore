@@ -19,4 +19,4 @@ tmp
 
 *.sublime-workspace
 
-*.rewritten
+*.rb.rb
