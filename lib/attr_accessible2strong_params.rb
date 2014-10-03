@@ -7,6 +7,8 @@ class AttrAccessible2StrongParams
   end
 end
 
+require 'parser/current'
 require 'attr_accessible2strong_params/remove_attr_accessible_rewriter'
+require 'attr_accessible2strong_params/modify_controller_rewriter'
 require 'attr_accessible2strong_params/converter'
 require 'attr_accessible2strong_params/version'

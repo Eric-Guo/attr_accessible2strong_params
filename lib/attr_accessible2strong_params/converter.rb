@@ -1,5 +1,4 @@
 require 'astrolabe/builder'
-require 'parser/current'
 require 'unparser'
 
 class AttrAccessible2StrongParams::Converter
@@ -24,7 +23,10 @@ class AttrAccessible2StrongParams::Converter
 
   def write_controller_with_strong_params(filename, no_rename = false)
     root_node, comments, buffer = parse_file_with_comments(filename)
-    write_file_with_comments(filename, root_node, comments, no_rename)
+    sp_src_buffer = Parser::Source::Buffer.new('(string)')
+    sp_src_buffer.source = ModifyControllerRewriter.new(@model_class_name, @model_fields).rewrite(buffer,root_node)
+    sp_src_node = Parser::CurrentRuby.new(Astrolabe::Builder.new).parse(sp_src_buffer)
+    write_file_with_comments(filename, sp_src_node, comments, no_rename)
   end
 
 private
@@ -38,7 +40,7 @@ private
 
   def write_file_with_comments(filename, root_node, comments, no_rename)
     rewritten = Unparser.unparse(root_node, comments)
-    temp_path = "#{filename}.rewritten"
+    temp_path = "#{filename}.rb"
     File.open(temp_path, 'w') do |temp_file|
       temp_file.write(rewritten)
       temp_file.puts unless rewritten.end_with?(?\n)
