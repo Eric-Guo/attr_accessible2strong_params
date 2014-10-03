@@ -5,9 +5,13 @@ require 'unparser'
 class AttrAccessible2StrongParams::Converter
   def read_attr_accessible(filename)
     root_node, comments = parse_file_with_comments(filename)
-    m = root_node.each_node(:send).select {|n| n.children[1] == :attr_accessible}.first
-    @model_class_name = m.parent.parent.children[0].children[1]
-    @aa_list = m.each_node(:sym).collect {|n| n.children[0]}
+    aa_nodes = root_node.each_node(:send).select {|n| n.children[1] == :attr_accessible}
+    aa_fields = []
+    aa_nodes.each do |m|
+      @model_class_name = m.parent.parent.children[0].children[1]
+      aa_fields <<= m.each_node(:sym).collect {|n| n.children[0]}
+    end
+    @model_fields = aa_fields.flatten
   end
 
   def write_controller_with_strong_params(filename)
