@@ -12,7 +12,8 @@ class AttrAccessible2StrongParams::Converter
 
     root_node = parser.parse(buffer)
     m = root_node.each_node(:send).select {|n| n.children[1] == :attr_accessible}.first
-    @aa = m.each_node(:sym).collect {|n| n.children[0]}
+    @model_class_name = m.parent.parent.children[0].children[1]
+    @aa_list = m.each_node(:sym).collect {|n| n.children[0]}
   end
 
   def write_controller_with_strong_params(filename)
