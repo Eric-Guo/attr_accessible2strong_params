@@ -8,7 +8,7 @@ class AttrAccessible2StrongParams::Converter
     aa_nodes = root_node.each_node(:send).select {|n| n.children[1] == :attr_accessible}
     aa_fields = []
     aa_nodes.each do |m|
-      @model_class_name = m.parent.parent.children[0].children[1]
+      @model_class_name = m.parent.parent.children[0].children[1].to_s
       aa_fields <<= m.each_node(:sym).collect {|n| n.children[0]}
     end
     @model_fields = aa_fields.flatten

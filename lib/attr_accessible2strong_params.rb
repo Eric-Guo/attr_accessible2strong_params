@@ -1,3 +1,5 @@
+require 'active_support/inflector'
+
 class AttrAccessible2StrongParams
   def self.convert(filename)
     t = Converter.new
