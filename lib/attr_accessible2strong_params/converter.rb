@@ -11,18 +11,13 @@ class AttrAccessible2StrongParams::Converter
       @model_class_name = m.parent.parent.children[0].children[1]
       aa_fields <<= m.each_node(:sym).collect {|n| n.children[0]}
     end
+    write_file_with_comments(filename, root_node, comments)
     @model_fields = aa_fields.flatten
   end
 
   def write_controller_with_strong_params(filename)
     root_node, comments = parse_file_with_comments(filename)
-    rewritten = Unparser.unparse(root_node, comments)
-    temp_path = "#{filename}.rewritten"
-    File.open(temp_path, 'w') do |temp_file|
-      temp_file.write(rewritten)
-      temp_file.puts unless rewritten.end_with?(?\n)
-    end
-    File.rename(temp_path, filename)
+    write_file_with_comments(filename, root_node, comments)
   end
 
 private
@@ -31,5 +26,15 @@ private
     buffer = Parser::Source::Buffer.new(filename)
     buffer.source = File.read(filename)
     parser.parse_with_comments(buffer)
+  end
+
+  def write_file_with_comments(filename, root_node, comments)
+    rewritten = Unparser.unparse(root_node, comments)
+    temp_path = "#{filename}.rewritten"
+    File.open(temp_path, 'w') do |temp_file|
+      temp_file.write(rewritten)
+      temp_file.puts unless rewritten.end_with?(?\n)
+    end
+    File.rename(temp_path, filename)
   end
 end
