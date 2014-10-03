@@ -3,7 +3,7 @@
 	[
 		{
 			"path": ".",
-			"folder_exclude_patterns": [".bundle",".idea",".yardoc","coverage"],
+			"folder_exclude_patterns": [".bundle",".idea",".yardoc","coverage","pkg"],
 			"file_exclude_patterns": [".gitkeep",".tags*",".gemtags","*.sublime-workspace"]
 		}
 	],
