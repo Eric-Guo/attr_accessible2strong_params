@@ -18,3 +18,5 @@ tmp
 .ruby-version
 
 *.sublime-workspace
+
+*.rewritten

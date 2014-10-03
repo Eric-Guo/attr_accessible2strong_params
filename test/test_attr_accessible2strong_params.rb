@@ -11,9 +11,14 @@ class AttrAccessible2StrongParamsTest < Test::Unit::TestCase
       , c.read_attr_accessible('test/example_model.rb')
   end
 
+  def test_remove_attr_accessible_from_model
+    c = AttrAccessible2StrongParams::Converter.new
+    assert_equal 0, c.remove_attr_accessible_from_model('test/example_model.rb', true)
+  end
+
   def test_write_controller_src
     c = AttrAccessible2StrongParams::Converter.new
     c.read_attr_accessible('test/example_model.rb')
-    assert_equal 0, c.write_controller_with_strong_params('test/example_controller.rb')
+    assert_equal 0, c.write_controller_with_strong_params('test/example_controller.rb', true)
   end
 end

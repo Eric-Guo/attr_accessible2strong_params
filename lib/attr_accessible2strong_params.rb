@@ -5,5 +5,6 @@ class AttrAccessible2StrongParams
   end
 end
 
+require 'attr_accessible2strong_params/remove_attr_accessible_rewriter'
 require 'attr_accessible2strong_params/converter'
 require 'attr_accessible2strong_params/version'
