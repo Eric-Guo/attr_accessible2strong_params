@@ -29,10 +29,13 @@ Gem::Specification.new do |spec|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       spec.add_runtime_dependency(%q<astrolabe>, ["~> 1.3"])
+      spec.add_runtime_dependency(%q<unparser>,  ["~> 0.1.15"])
     else
       spec.add_dependency(%q<astrolabe>, ["~> 1.3"])
+      spec.add_dependency(%q<unparser>,  ["~> 0.1.15"])
     end
   else
     spec.add_dependency(%q<astrolabe>, ["~> 1.3"])
+    spec.add_dependency(%q<unparser>,  ["~> 0.1.15"])
   end
 end
