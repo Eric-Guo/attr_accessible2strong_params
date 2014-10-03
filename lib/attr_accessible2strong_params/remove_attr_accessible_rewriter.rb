@@ -3,5 +3,6 @@ class RemoveAttrAccessibleRewriter < Parser::Rewriter
     if node.children[1] == :attr_accessible
       remove(node.loc.expression)
     end
+    super
   end
 end
