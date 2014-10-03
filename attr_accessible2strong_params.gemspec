@@ -22,6 +22,8 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency 'minitest', '~> 5.4'
+
 
   spec.required_rubygems_version = Gem::Requirement.new(">= 0") if spec.respond_to? :required_rubygems_version=
   if spec.respond_to? :specification_version then
@@ -30,12 +32,15 @@ Gem::Specification.new do |spec|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       spec.add_runtime_dependency(%q<astrolabe>, ["~> 1.3"])
       spec.add_runtime_dependency(%q<unparser>,  ["~> 0.1.15"])
+      spec.add_runtime_dependency(%q<activesupport>, ['>= 3.2', '< 5.0'])
     else
       spec.add_dependency(%q<astrolabe>, ["~> 1.3"])
       spec.add_dependency(%q<unparser>,  ["~> 0.1.15"])
+      spec.add_dependency(%q<activesupport>, ['>= 3.2', '< 5.0'])
     end
   else
     spec.add_dependency(%q<astrolabe>, ["~> 1.3"])
     spec.add_dependency(%q<unparser>,  ["~> 0.1.15"])
+    spec.add_dependency(%q<activesupport>, ['>= 3.2', '< 5.0'])
   end
 end
