@@ -3,7 +3,7 @@ require 'active_support/core_ext/object'
 require 'active_support/inflector'
 
 class AttrAccessible2StrongParams
-  def self.convert(file_or_dir)
+  def self.convert(file_or_dir, no_rename = false)
     @files = []
     file_or_dir ||= '.'
     if File.directory?(file_or_dir)
@@ -13,6 +13,12 @@ class AttrAccessible2StrongParams
       end
     else
       @files << file_or_dir if File.exist? file_or_dir
+    end
+    @files.each do |filename|
+      c = AttrAccessible2StrongParams::Converter.new
+      c.read_attr_accessible(filename)
+      c.remove_attr_accessible_from_model(filename, no_rename)
+      c.write_controller_with_strong_params(nil, no_rename)
     end
   end
 end

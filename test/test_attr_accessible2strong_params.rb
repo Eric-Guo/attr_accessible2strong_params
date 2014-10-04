@@ -6,11 +6,11 @@ require 'attr_accessible2strong_params'
 
 class AttrAccessible2StrongParamsTest < MiniTest::Test
   def test_convert_by_folder
-    AttrAccessible2StrongParams.convert('test/railsapp')
+    AttrAccessible2StrongParams.convert('test/railsapp', true)
   end
 
   def test_convert_by_model_files
-    AttrAccessible2StrongParams.convert('test/railsapp/app/models/material_transfer_issue.rb')
+    AttrAccessible2StrongParams.convert('test/railsapp/app/models/material_transfer_issue.rb', true)
   end
 
   def test_read_model_attr_accessible_sym_list
