@@ -3,6 +3,7 @@ require 'unparser'
 
 class AttrAccessible2StrongParams::Converter
   def read_attr_accessible(filename)
+    @model_file_name = filename
     root_node, comments, buffer = parse_file_with_comments(filename)
     aa_nodes = root_node.each_node(:send).select {|n| n.children[1] == :attr_accessible}
     aa_fields = []
@@ -21,7 +22,8 @@ class AttrAccessible2StrongParams::Converter
     write_file_with_comments(filename, no_aa_node, comments, no_rename)
   end
 
-  def write_controller_with_strong_params(filename, no_rename = false)
+  def write_controller_with_strong_params(filename = nil, no_rename = false)
+    filename = "#{File.dirname @model_file_name}/../controllers/#{@model_class_name.pluralize.underscore}_controller.rb" if filename.nil?
     root_node, comments, buffer = parse_file_with_comments(filename)
     sp_src_buffer = Parser::Source::Buffer.new('(string)')
     sp_src_buffer.source = ModifyControllerRewriter.new(@model_class_name, @model_fields).rewrite(buffer,root_node)

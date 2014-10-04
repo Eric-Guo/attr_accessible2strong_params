@@ -12,7 +12,7 @@ class AttrAccessible2StrongParams
         @files << path if path.end_with? '.rb'
       end
     else
-      @files << file_or_dir
+      @files << file_or_dir if File.exist? file_or_dir
     end
   end
 end

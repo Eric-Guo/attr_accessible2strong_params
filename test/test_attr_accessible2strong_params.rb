@@ -27,6 +27,6 @@ class AttrAccessible2StrongParamsTest < MiniTest::Test
   def test_write_controller_src
     c = AttrAccessible2StrongParams::Converter.new
     c.read_attr_accessible('test/railsapp/app/models/material_transfer_issue.rb')
-    assert_equal 0, c.write_controller_with_strong_params('test/railsapp/app/controllers/material_transfer_issues_controller.rb', true)
+    assert_equal 0, c.write_controller_with_strong_params(nil, true)
   end
 end
