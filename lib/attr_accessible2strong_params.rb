@@ -16,9 +16,11 @@ class AttrAccessible2StrongParams
     end
     @files.each do |filename|
       c = AttrAccessible2StrongParams::Converter.new
-      c.read_attr_accessible(filename)
+      next if c.read_attr_accessible(filename).blank?
+      print(filename, ' found:', c.model_fields)
       c.remove_attr_accessible_from_model(filename, no_rename)
       c.write_controller_with_strong_params(nil, no_rename)
+      puts
     end
   end
 end

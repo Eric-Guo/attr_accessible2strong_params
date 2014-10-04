@@ -2,6 +2,8 @@ require 'astrolabe/builder'
 require 'unparser'
 
 class AttrAccessible2StrongParams::Converter
+  attr_reader :model_fields
+
   def read_attr_accessible(filename)
     @model_file_name = filename
     root_node, comments, buffer = parse_file_with_comments(filename)
@@ -24,6 +26,7 @@ class AttrAccessible2StrongParams::Converter
 
   def write_controller_with_strong_params(filename = nil, no_rename = false)
     filename = "#{File.dirname @model_file_name}/../controllers/#{@model_class_name.pluralize.underscore}_controller.rb" if filename.nil?
+    return unless File.exist? filename
     root_node, comments, buffer = parse_file_with_comments(filename)
     sp_src_buffer = Parser::Source::Buffer.new('(string)')
     sp_src_buffer.source = ModifyControllerRewriter.new(@model_class_name, @model_fields).rewrite(buffer,root_node)
