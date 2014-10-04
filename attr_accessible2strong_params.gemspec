@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = %q{https://github.com/Eric-Guo/attr_accessible2strong_params}
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files`.split($/)
+  spec.files         = `git ls-files`.split($/) - ['.gitignore','.travis.yml','attr_accessible2strong_params.sublime-project']
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.extra_rdoc_files = ['LICENSE.txt', 'README.md']
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})

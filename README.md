@@ -13,4 +13,9 @@ Automatically convert Rails 3 attr_accessible to Rails 4 Strong Parameter
 
 ## Usage
 
-Run `attr_accessible2strong_params` in your rails root folder and program will do auto convert. (You must using git to control change, right?)
+Run `attr_accessible2strong_params` in your rails root folder and program will do auto convert. (but it clear that you need to review the change.)
+
+
+## Known issue
+
+Due to the using [unparser](https://github.com/mbj/unparser#usage) to rewrite the source code, so it does not reproduce your source! It produces equivalent source.
