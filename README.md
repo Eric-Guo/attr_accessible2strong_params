@@ -13,7 +13,9 @@ Automatically convert Rails 3 attr_accessible to Rails 4 Strong Parameter
 
 ## Usage
 
-Run `aa2sp` in your rails root folder and program will do auto convert. (but it clear that you need to review the change.)
+    $ aa2sp [filename OR dirname OR .]
+
+Run `aa2sp .` in your rails root folder and program will do auto convert. Ensure the Git repository is clean. (You don't want to mix up your changes and auto convert changes, right?)
 
 
 ## Known issue

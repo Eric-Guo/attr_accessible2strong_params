@@ -5,7 +5,10 @@ require 'active_support/inflector'
 class AttrAccessible2StrongParams
   def self.convert(file_or_dir, no_rename = false)
     @files = []
-    file_or_dir ||= '.'
+    if file_or_dir.nil? or not File.exist?(file_or_dir)
+      puts 'aa2sp [filename OR dirname]'
+      return
+    end
     if File.directory?(file_or_dir)
       Find.find("#{file_or_dir}/app/models/") do |path|
         next if path.end_with? '.rb.rb'
