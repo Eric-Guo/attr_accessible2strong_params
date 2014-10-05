@@ -13,7 +13,7 @@ Automatically convert Rails 3 attr_accessible to Rails 4 Strong Parameter
 
 ## Usage
 
-Run `attr_accessible2strong_params` in your rails root folder and program will do auto convert. (but it clear that you need to review the change.)
+Run `aa2sp` in your rails root folder and program will do auto convert. (but it clear that you need to review the change.)
 
 
 ## Known issue
